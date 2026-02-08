@@ -1,7 +1,8 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -13,14 +14,14 @@
 
 html, body {
   height: 100%;
-  overflow: hidden;
-  background:linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  overflow-x: hidden; /* avoid horizontal scroll */
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
   font-family: "Comic Sans MS", cursive;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 4em; /* smaller logo for mobile */
+  padding: 1em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -47,7 +48,7 @@ html, body {
 }
 
 .card {
-  padding: 2em;
+  padding: 1.5em; /* smaller padding for mobile */
 }
 
 .read-the-docs {
@@ -57,29 +58,56 @@ html, body {
 .page {
   min-height: 100vh;
   display: flex;
-  justify-content: center; /* centers horizontally */
-  background-color: #f5f5f5; /* light contrast */
+  flex-direction: column; /* stack vertically on mobile */
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
 }
 
 /* Center vertical box */
 .center-box {
-  width: 600px;           /* controls separation left/right */
-  min-height: 100vh;      /* goes down the page */
+  width: 90%;           /* almost full width on mobile */
+  max-width: 400px;     /* limit too wide */
+  min-height: auto;     /* height adjusts automatically */
   background-color: #ffffff;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border-left: none;    /* remove borders for mobile */
+  border-right: none;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  margin-bottom: 2rem;
 }
 
 .page h2 {
-  color:black;
+  color: black;
+  font-size: 1.5rem; /* adjust for mobile */
+  margin-bottom: 1rem;
 }
 
 .page .yesBtn {
-  margin-right: 25px;
-  margin-top: 25px;
+  margin: 15px 20px 0px 0;
 }
 
 .heyGif {
-  height: 45vh; 
-  margin-top: 10vh;
+  height: 30vh; /* smaller gif for mobile */
+  margin-top: 5vh;
+}
+
+/* Optional: Media query for small screens */
+@media (max-width: 480px) {
+  .logo {
+    height: 3em;
+    padding: 0.5em;
+  }
+  .center-box {
+    width: 95%;
+    padding: 0.8rem;
+  }
+  .page h2 {
+    font-size: 1.3rem;
+  }
+  .heyGif {
+    height: 25vh;
+    margin-top: 5vh;
+  }
 }
